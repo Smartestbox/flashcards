@@ -71,6 +71,7 @@ export const AsLink: Story = {
   args: {
     as: 'a',
     children: 'Link that looks like a button',
-    variant: 'primary',
+    fullWidth: false,
+    variant: 'link',
   },
 }
