@@ -9,7 +9,7 @@ const meta = {
     },
     variant: {
       control: { type: 'radio' },
-      options: ['primary', 'secondary', 'tertiary', 'link'],
+      options: ['primary', 'secondary'],
     },
   },
   component: Button,
@@ -20,58 +20,44 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Primary: Story = {
+export const PrimaryButton: Story = {
   args: {
-    children: 'Primary Button',
+    children: 'Button',
     variant: 'primary',
   },
 }
 
-export const PrimaryWithIcon: Story = {
+export const PrimaryButtonWithIcon: Story = {
   args: {
-    children: 'Primary button with icon',
+    children: 'Button',
     variant: 'primary',
   },
 }
 
-export const Secondary: Story = {
+export const SecondaryButton: Story = {
   args: {
-    children: 'Secondary Button',
+    children: 'Button',
     variant: 'secondary',
   },
 }
-export const SecondaryWithIcon = {
+export const SecondaryButtonWithIcon = {
   args: {
-    children: 'Secondary button with icon',
+    children: 'Button',
     variant: 'secondary',
-  },
-}
-export const Tertiary: Story = {
-  args: {
-    children: 'Tertiary Button',
-    variant: 'tertiary',
-  },
-}
-export const Link: Story = {
-  args: {
-    children: 'Tertiary Button',
-    variant: 'link',
   },
 }
 
-export const FullWidth: Story = {
+export const DisabledButton = {
+  args: {
+    children: 'Button',
+    disabled: true,
+  },
+}
+
+export const FullWidthButton: Story = {
   args: {
     children: 'Full Width Button',
     fullWidth: true,
     variant: 'primary',
-  },
-}
-
-export const AsLink: Story = {
-  args: {
-    as: 'a',
-    children: 'Link that looks like a button',
-    fullWidth: false,
-    variant: 'link',
   },
 }
