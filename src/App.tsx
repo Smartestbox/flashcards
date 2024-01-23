@@ -1,9 +1,10 @@
+import { Logout } from '@/assets/icons'
 import { Button } from '@/components/ui/button'
 
 export function App() {
   return (
     <div>
-      <Button>Button</Button>
+      <Button icon={<Logout />}>Button</Button>
     </div>
   )
 }

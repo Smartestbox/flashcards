@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, ElementType } from 'react'
+import { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react'
 
 import { clsx } from 'clsx'
 
@@ -8,16 +8,27 @@ type ButtonProps<T extends ElementType> = {
   as?: T
   className?: string
   fullWidth?: boolean
+  icon?: ReactNode
   variant?: 'primary' | 'secondary'
 } & ComponentPropsWithoutRef<T>
 
 export const Button = <T extends ElementType>(props: ButtonProps<T>) => {
-  const { as: Component = 'button', className, fullWidth, variant = 'primary' } = props
+  const {
+    as: Component = 'button',
+    children,
+    className,
+    fullWidth,
+    icon,
+    variant = 'primary',
+  } = props
 
   return (
     <Component
       className={clsx(s.button, s[variant], fullWidth && s.fullWidth, className)}
       {...props}
-    />
+    >
+      {icon}
+      {children}
+    </Component>
   )
 }
