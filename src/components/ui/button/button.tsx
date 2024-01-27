@@ -20,12 +20,13 @@ export const Button = <T extends ElementType>(props: ButtonProps<T>) => {
     fullWidth,
     icon,
     variant = 'primary',
+    ...restPorps
   } = props
 
   return (
     <Component
       className={clsx(s.button, s[variant], fullWidth && s.fullWidth, className)}
-      {...props}
+      {...restPorps}
     >
       {icon}
       {children}
