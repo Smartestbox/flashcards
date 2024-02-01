@@ -1,3 +1,18 @@
+.label {
+  cursor: pointer;
+
+  display: flex;
+  gap: 15px;
+  align-items: center;
+
+  width: fit-content;
+
+  &.disabled {
+    cursor: default;
+    color: var(--color-dark-100);
+  }
+}
+
 .root {
   cursor: pointer;
 
@@ -34,17 +49,18 @@
   }
 
   &[data-state='checked']:disabled {
+    cursor: default;
     color: var(--color-light-700);
     background-color: var(--color-dark-100);
     border-color: var(--color-dark-100);
   }
 
-  &:hover::before {
+  &:not(:disabled):hover::before {
     background-color: var(--color-dark-500);
   }
 
-  &:focus::before,
-  &:active::before {
+  &:not(:disabled):focus-visible::before,
+  &:not(:disabled):active::before {
     background-color: var(--color-dark-100);
   }
 }
@@ -56,15 +72,4 @@
 
   width: 18px;
   height: 18px;
-}
-
-.label {
-  cursor: pointer;
-  display: flex;
-  gap: 15px;
-  align-items: center;
-
-  &.disabled {
-    color: var(--color-dark-100);
-  }
 }

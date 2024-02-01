@@ -24,14 +24,14 @@ type Story = StoryObj<typeof meta>
 
 export const PrimaryButton: Story = {
   args: {
-    children: 'Primary button',
+    children: 'Primary Button',
     variant: 'primary',
   },
 }
 
 export const PrimaryButtonWithIcon: Story = {
   args: {
-    children: 'Primary button logout',
+    children: 'Primary Button logout',
     disabled: false,
     icon: <Logout />,
     variant: 'primary',
@@ -40,14 +40,14 @@ export const PrimaryButtonWithIcon: Story = {
 
 export const SecondaryButton: Story = {
   args: {
-    children: 'Secondary button',
+    children: 'Secondary Button',
     disabled: false,
     variant: 'secondary',
   },
 }
 export const SecondaryButtonWithIcon = {
   args: {
-    children: 'Secondary button logout',
+    children: 'Secondary Button logout',
     disabled: false,
     icon: <Logout />,
     variant: 'secondary',
@@ -56,14 +56,14 @@ export const SecondaryButtonWithIcon = {
 
 export const DisabledButton = {
   args: {
-    children: 'Disabled primary button',
+    children: 'Disabled primary Button',
     disabled: true,
   },
 }
 
 export const FullWidthButton: Story = {
   args: {
-    children: 'Full width button',
+    children: 'Full width Button',
     disabled: false,
     fullWidth: true,
     variant: 'primary',

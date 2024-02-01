@@ -1,11 +1,12 @@
 import { ComponentPropsWithoutRef } from 'react'
 
-import { Typography } from '@/components/ui/typography'
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox'
 import { CheckIcon } from '@radix-ui/react-icons'
 import { clsx } from 'clsx'
 
-import s from './checkbox.module.scss'
+import s from './Checkbox.module.scss'
+
+import { Typography } from '../Typography'
 
 type CheckboxProps = {
   disabled: boolean

@@ -2,7 +2,7 @@ import { ComponentPropsWithoutRef, ElementType } from 'react'
 
 import { clsx } from 'clsx'
 
-import s from './card.module.scss'
+import s from './Card.module.scss'
 
 type CardProps<T extends ElementType> = {
   as?: T

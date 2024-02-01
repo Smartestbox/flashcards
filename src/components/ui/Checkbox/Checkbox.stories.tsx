@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Checkbox } from './checkbox'
+import { Checkbox } from './Checkbox'
 
 const meta = {
   argTypes: {
@@ -18,10 +18,13 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  args: {},
+  args: {
+    disabled: false,
+  },
 }
 export const CheckboxWithLabel: Story = {
   args: {
+    disabled: false,
     label: 'Checkbox label',
   },
 }
@@ -29,6 +32,6 @@ export const DisabledCheckbox: Story = {
   args: {
     checked: true,
     disabled: true,
-    label: 'Disabled checkbox',
+    label: 'Disabled Checkbox',
   },
 }
