@@ -3,11 +3,6 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { TextField } from './TextField'
 
 const meta = {
-  argTypes: {
-    disabled: {
-      control: { type: 'boolean' },
-    },
-  },
   component: TextField,
   tags: ['autodocs'],
   title: 'Components/TextField',
@@ -27,9 +22,25 @@ export const InputDisabled: Story = {
     label: 'Input',
   },
 }
-export const InputWithEye: Story = {
-  args: {},
+export const InputError: Story = {
+  args: {
+    error: true,
+    errorLabel: 'Error',
+    label: 'Input',
+  },
 }
-export const InputWithLens: Story = {
-  args: {},
+export const InputPassword: Story = {
+  args: {
+    label: 'Input',
+    placeholder: 'Password',
+    type: 'password',
+  },
+}
+export const InputSearch: Story = {
+  args: {
+    error: true,
+    errorLabel: 'Error!',
+    label: 'Input',
+    type: 'search',
+  },
 }

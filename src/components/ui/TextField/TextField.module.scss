@@ -1,9 +1,22 @@
 .container {
   display: flex;
   flex-direction: column;
+  gap: 5px;
+  width: 100%;
+}
+
+.inputWrapper {
+  position: relative;
+  width: 100%;
+
+  &:hover .field:not(:disabled) {
+    background-color: var(--color-dark-700);
+    border: 1px solid var(--color-dark-100);
+  }
 }
 
 .field {
+  width: 100%;
   padding: 10px;
 
   background-color: transparent;
@@ -11,30 +24,38 @@
   border-radius: 2px;
   outline: none;
 
-  transition: 0.3s;
-
   &::placeholder {
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 24px;
+    font-size: var(--font-size-m);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-m);
     color: var(--color-dark-100);
   }
 
-  &:disabled {
-    color: var(--color-dark-300);
-  }
-
-  &:hover:not(:disabled) {
+  &:hover {
     background-color: var(--color-dark-700);
     border: 1px solid var(--color-dark-100);
   }
 
-  &:focus:not(:disabled) {
-    border: 1px solid var(--color-info-700);
+  &.error {
+    border: 1px solid var(--color-danger-300);
+  }
+
+  &.error::placeholder {
+    color: var(--color-danger-300);
+  }
+
+  &:focus-visible {
+    outline: 1px solid var(--color-info-700);
   }
 
   &:disabled::placeholder {
     color: var(--color-dark-300);
+  }
+
+  &:disabled {
+    color: var(--color-dark-300);
+    background-color: transparent;
+    border: 1px solid var(--color-dark-300);
   }
 }
 
@@ -44,4 +65,35 @@
 
 .disabled {
   color: var(--color-dark-300);
+}
+
+.errorLabel {
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-m);
+  color: var(--color-danger-300);
+}
+
+.searchIcon {
+  position: absolute;
+  top: 25%;
+  left: 0;
+  margin-left: 12px;
+}
+
+.passwordIcon {
+  cursor: pointer;
+
+  position: absolute;
+  top: 25%;
+  right: 0;
+
+  margin-right: 12px;
+}
+
+.searchInput {
+  padding-left: 40px;
+}
+
+.passwordInput {
+  padding-right: 40px;
 }

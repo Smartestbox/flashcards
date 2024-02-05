@@ -29,7 +29,7 @@ export const PrimaryButton: Story = {
   },
 }
 
-export const PrimaryButtonWithIcon: Story = {
+export const PrimaryButtonLogout: Story = {
   args: {
     children: 'Primary Button logout',
     disabled: false,
@@ -45,7 +45,7 @@ export const SecondaryButton: Story = {
     variant: 'secondary',
   },
 }
-export const SecondaryButtonWithIcon = {
+export const SecondaryButtonLogout: Story = {
   args: {
     children: 'Secondary Button logout',
     disabled: false,
@@ -54,7 +54,7 @@ export const SecondaryButtonWithIcon = {
   },
 }
 
-export const DisabledButton = {
+export const DisabledButton: Story = {
   args: {
     children: 'Disabled primary Button',
     disabled: true,
