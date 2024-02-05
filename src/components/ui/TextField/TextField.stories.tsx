@@ -31,16 +31,14 @@ export const InputError: Story = {
 }
 export const InputPassword: Story = {
   args: {
-    label: 'Input',
+    label: 'Password',
     placeholder: 'Password',
     type: 'password',
   },
 }
 export const InputSearch: Story = {
   args: {
-    error: true,
-    errorLabel: 'Error!',
-    label: 'Input',
+    label: 'Search...',
     type: 'search',
   },
 }

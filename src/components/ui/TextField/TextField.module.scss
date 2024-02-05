@@ -11,8 +11,11 @@
 
   &:hover .field:not(:disabled) {
     background-color: var(--color-dark-700);
-    border: 1px solid var(--color-dark-100);
   }
+}
+
+.label {
+  color: var(--color-dark-100);
 }
 
 .field {
@@ -31,17 +34,12 @@
     color: var(--color-dark-100);
   }
 
-  &:hover {
-    background-color: var(--color-dark-700);
-    border: 1px solid var(--color-dark-100);
-  }
-
   &.error {
     border: 1px solid var(--color-danger-300);
-  }
 
-  &.error::placeholder {
-    color: var(--color-danger-300);
+    &::placeholder {
+      color: var(--color-danger-300);
+    }
   }
 
   &:focus-visible {
@@ -57,10 +55,6 @@
     background-color: transparent;
     border: 1px solid var(--color-dark-300);
   }
-}
-
-.label {
-  color: var(--color-dark-100);
 }
 
 .disabled {
