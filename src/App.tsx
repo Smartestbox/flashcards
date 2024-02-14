@@ -1,5 +1,10 @@
-import { TextField } from '@/components/ui/TextField'
+import { Select } from '@/components/ui/Select'
 
 export function App() {
-  return <TextField disabled label={'Input'} type={'search'} />
+  return (
+    <div>
+      <Select disabled />
+      <Select />
+    </div>
+  )
 }

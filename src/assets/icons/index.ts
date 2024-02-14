@@ -1,3 +1,6 @@
+export { default as Check } from './Check'
+export { default as ChevronDown } from './ChevronDown'
+export { default as ChevronUp } from './ChevronUp'
 export { default as ClosedEye } from './ClosedEye'
 export { default as Logout } from './Logout'
 export { default as OpenedEye } from './OpenedEye'

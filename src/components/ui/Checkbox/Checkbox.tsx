@@ -1,7 +1,7 @@
 import { ComponentPropsWithoutRef } from 'react'
 
+import { Check } from '@/assets/icons'
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox'
-import { CheckIcon } from '@radix-ui/react-icons'
 import { clsx } from 'clsx'
 
 import s from './Checkbox.module.scss'
@@ -19,7 +19,7 @@ export const Checkbox = (props: CheckboxProps) => {
     <Typography as={'label'} className={clsx(s.label, disabled && s.disabled)}>
       <CheckboxPrimitive.Root className={s.root} disabled={disabled} {...restProps}>
         <CheckboxPrimitive.Indicator className={s.indicator}>
-          <CheckIcon />
+          <Check />
         </CheckboxPrimitive.Indicator>
       </CheckboxPrimitive.Root>
       {label}
