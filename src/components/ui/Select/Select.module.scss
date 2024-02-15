@@ -1,3 +1,11 @@
+.label {
+  color: var(--color-light-100);
+
+  &.disabled {
+    color: var(--color-dark-300);
+  }
+}
+
 .SelectTrigger {
   cursor: pointer;
 
@@ -20,28 +28,30 @@
     border-radius: 2px 2px 0 0;
   }
 
-  &:hover:not([data-disabled]) {
-    background-color: var(--color-dark-500);
-    border: 1px solid var(--color-dark-100);
-  }
-
   &:focus-visible {
     border: 1px solid transparent;
     outline: 2px solid var(--color-info-700);
+  }
+
+  &:hover:not([data-disabled]) {
+    background-color: var(--color-dark-500);
+    border: 1px solid var(--color-dark-100);
   }
 
   &[data-disabled] {
     cursor: default;
     color: var(--color-dark-300);
     border: 1px solid var(--color-dark-300);
+
+    & p {
+      color: var(--color-dark-300);
+    }
   }
 }
 
 .SelectContent {
-  position: relative;
-  left: -10px;
-
-  width: 210px;
+  width: var(--radix-select-trigger-width);
+  max-height: var(--radix-select-content-available-height);
 
   background-color: transparent;
   border: 1px solid var(--color-dark-100);
@@ -65,4 +75,8 @@
     background-color: var(--color-accent-900);
     outline: none;
   }
+}
+
+.fullWidth {
+  width: 100%;
 }

@@ -3,9 +3,6 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { Typography } from './'
 
 const meta = {
-  args: {
-    style: { color: '#000' },
-  },
   component: Typography,
   tags: ['autodocs'],
   title: 'Components/Typography',
