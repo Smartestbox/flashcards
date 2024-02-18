@@ -1,66 +1,83 @@
-import { ComponentPropsWithoutRef, useState } from 'react'
+import { ChangeEvent, ComponentPropsWithoutRef, forwardRef, useState } from 'react'
 
-import { ClosedEye, OpenedEye, Search } from '@/assets/icons'
+import { ClosedEye, Cross, OpenedEye, Search } from '@/assets/icons'
 import { Typography } from '@/components/ui/Typography'
 import { clsx } from 'clsx'
 
 import s from './TextField.module.scss'
 
 type TextFieldProps = {
-  error?: boolean
-  errorLabel?: string
+  errorText?: string
   label?: string
+  onChangeValue?: (value: string) => void
 } & ComponentPropsWithoutRef<'input'>
 
-export const TextField = (props: TextFieldProps) => {
+export const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, ref) => {
+  const { disabled, errorText, label, name, onChange, onChangeValue, type, value, ...restProps } =
+    props
   const [isShowPassword, setIsShowPassword] = useState<boolean>(false)
-
-  const { disabled, error, errorLabel, label, placeholder = 'Input', type, ...rest } = props
 
   const inputType = type === 'password' && isShowPassword ? 'text' : type
 
   const styles = {
-    eyeColor: clsx(disabled ? '#4C4C4C' : '#FFFFFF'),
-    input: clsx(s.field, error && s.error, type === 'search' && s.searchInput),
+    input: clsx(s.input, errorText && s.error, type === 'search' && s.searchInput),
     label: clsx(disabled ? s.disabled : s.label),
-    searchColor: clsx((disabled && '#4C4C4C') || (error && '#F23D61') || '#808080'),
+    leftIcon: clsx(s.leftIcon),
+    leftIconColor: clsx((disabled && '#4C4C4C') || (errorText && '#F23D61') || '#808080'),
+    rightIcon: clsx(s.rightIcon),
+    rightIconColor: clsx(disabled ? '#4C4C4C' : '#FFFFFF'),
   }
 
   const handleClickShowPassword = () => {
     setIsShowPassword(prev => !prev)
   }
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    onChange?.(e)
+  }
+  const handleClickClearField = () => {
+    onChangeValue?.('')
+  }
 
   return (
     <div className={s.container}>
       {label && (
-        <Typography as={'span'} className={styles.label} variant={'body2'}>
+        <Typography as={'label'} className={styles.label} variant={'body2'}>
           {label}
         </Typography>
       )}
       <div className={s.inputWrapper}>
-        {type === 'search' && <Search className={s.searchIcon} color={styles.searchColor} />}
-        {type === 'password' && (
-          <div className={s.passwordIcon} onClick={handleClickShowPassword}>
-            {isShowPassword ? (
-              <OpenedEye color={styles.eyeColor} />
-            ) : (
-              <ClosedEye color={styles.eyeColor} />
-            )}
-          </div>
-        )}
+        {type === 'search' && <Search className={styles.leftIcon} color={styles.leftIconColor} />}
         <input
           className={styles.input}
           disabled={disabled}
-          placeholder={error ? 'Error' : placeholder}
+          onChange={handleChange}
+          ref={ref}
           type={inputType}
-          {...rest}
+          value={value}
+          {...restProps}
         />
+        {type === 'search' && value && (
+          <Cross
+            className={styles.rightIcon}
+            color={styles.rightIconColor}
+            onClick={handleClickClearField}
+          />
+        )}
+        {type === 'password' && (
+          <div className={s.rightIcon} onClick={handleClickShowPassword}>
+            {isShowPassword ? (
+              <OpenedEye className={styles.rightIcon} color={styles.rightIconColor} />
+            ) : (
+              <ClosedEye className={styles.rightIcon} color={styles.rightIconColor} />
+            )}
+          </div>
+        )}
       </div>
-      {!!errorLabel && (
+      {!!errorText && (
         <Typography as={'span'} className={s.errorLabel}>
-          {errorLabel}
+          {errorText}
         </Typography>
       )}
     </div>
   )
-}
+})
