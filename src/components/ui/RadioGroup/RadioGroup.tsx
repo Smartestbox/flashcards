@@ -1,42 +1,44 @@
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
+
+import { Typography } from '@/components/ui/Typography'
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group'
+import { clsx } from 'clsx'
 
 import s from './RadioGroup.module.scss'
 
-export const RadioGroup = () => (
-  <form>
-    <RadioGroupPrimitive.Root
-      aria-label={'View density'}
-      className={s.RadioGroupPrimitiveRoot}
-      defaultValue={'default'}
-    >
-      <div style={{ alignItems: 'center', display: 'flex' }}>
-        <RadioGroupPrimitive.Item className={s.RadioGroupPrimitiveItem} id={'r1'} value={'default'}>
-          <RadioGroupPrimitive.Indicator className={s.RadioGroupPrimitiveIndicator} />
-        </RadioGroupPrimitive.Item>
-        <label className={s.Label} htmlFor={'r1'}>
-          Default
-        </label>
-      </div>
-      <div style={{ alignItems: 'center', display: 'flex' }}>
-        <RadioGroupPrimitive.Item
-          className={s.RadioGroupPrimitiveItem}
-          id={'r2'}
-          value={'comfortable'}
-        >
-          <RadioGroupPrimitive.Indicator className={s.RadioGroupPrimitiveIndicator} />
-        </RadioGroupPrimitive.Item>
-        <label className={s.Label} htmlFor={'r2'}>
-          Comfortable
-        </label>
-      </div>
-      <div style={{ alignItems: 'center', display: 'flex' }}>
-        <RadioGroupPrimitive.Item className={s.RadioGroupPrimitiveItem} id={'r3'} value={'compact'}>
-          <RadioGroupPrimitive.Indicator className={s.RadioGroupPrimitiveIndicator} />
-        </RadioGroupPrimitive.Item>
-        <label className={s.Label} htmlFor={'r3'}>
-          Compact
-        </label>
-      </div>
-    </RadioGroupPrimitive.Root>
-  </form>
+type Option = {
+  label: string
+  value: string
+}
+
+type RadioGroupProps = {
+  options: Option[]
+} & Omit<ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root>, 'asChild'>
+
+export const RadioGroup = forwardRef<ElementRef<typeof RadioGroupPrimitive.Root>, RadioGroupProps>(
+  (props, ref) => {
+    const { disabled, options, ...restProps } = props
+
+    return (
+      <RadioGroupPrimitive.Root
+        className={s.RadioGroupPrimitiveRoot}
+        {...restProps}
+        disabled={disabled}
+        ref={ref}
+      >
+        {options.map(option => {
+          return (
+            <div className={s.RadioElementContainer} key={option.value}>
+              <RadioGroupPrimitive.Item className={s.RadioGroupPrimitiveItem} value={option.value}>
+                <RadioGroupPrimitive.Indicator className={s.RadioGroupPrimitiveIndicator} />
+              </RadioGroupPrimitive.Item>
+              <Typography as={'label'} className={clsx(s.Label, disabled && s.disabled)}>
+                {option.label}
+              </Typography>
+            </div>
+          )
+        })}
+      </RadioGroupPrimitive.Root>
+    )
+  }
 )
