@@ -1,4 +1,11 @@
-import { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react'
+import {
+  ComponentPropsWithoutRef,
+  ElementRef,
+  ElementType,
+  ReactNode,
+  Ref,
+  forwardRef,
+} from 'react'
 
 import { clsx } from 'clsx'
 
@@ -12,24 +19,21 @@ type ButtonProps<T extends ElementType = 'button'> = {
   variant?: 'primary' | 'secondary'
 } & ComponentPropsWithoutRef<T>
 
-export const Button = <T extends ElementType = 'button'>(props: ButtonProps<T>) => {
-  const {
-    as: Component = 'button',
-    children,
-    className,
-    fullWidth,
-    icon,
-    variant = 'primary',
-    ...restPorps
-  } = props
+export const Button = forwardRef(
+  <T extends ElementType = 'button'>(props: ButtonProps<T>, ref: Ref<ElementRef<T>>) => {
+    const { as, children, className, fullWidth, icon, variant = 'primary', ...restProps } = props
 
-  return (
-    <Component
-      className={clsx(s.button, s[variant], fullWidth && s.fullWidth, className)}
-      {...restPorps}
-    >
-      {icon}
-      {children}
-    </Component>
-  )
-}
+    const Component: ElementType = as || 'button'
+
+    return (
+      <Component
+        className={clsx(s.button, s[variant], fullWidth && s.fullWidth, className)}
+        {...restProps}
+        ref={ref}
+      >
+        {icon}
+        {children}
+      </Component>
+    )
+  }
+)

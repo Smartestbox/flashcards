@@ -1,15 +1,19 @@
-import { ComponentPropsWithoutRef, ElementType } from 'react'
+import { ComponentPropsWithoutRef, ElementRef, ElementType, Ref, forwardRef } from 'react'
 
 import { clsx } from 'clsx'
 
 import s from './Card.module.scss'
 
-type CardProps<T extends ElementType> = {
+type CardProps<T extends ElementType = 'div'> = {
   as?: T
 } & ComponentPropsWithoutRef<T>
 
-export const Card = <T extends ElementType>(props: CardProps<T>) => {
-  const { as: Component = 'div', className, ...restProps } = props
+export const Card = forwardRef(
+  <T extends ElementType = 'div'>(props: CardProps<T>, ref: Ref<ElementRef<T>>) => {
+    const { as, className, ...restProps } = props
 
-  return <Component className={clsx(s.card, className)} {...restProps} />
-}
+    const Component: ElementType = as || 'div'
+
+    return <Component className={clsx(s.card, className)} ref={ref} {...restProps} />
+  }
+)
