@@ -11,7 +11,7 @@ import { clsx } from 'clsx'
 
 import s from './Button.module.scss'
 
-type ButtonProps<T extends ElementType = 'button'> = {
+type ButtonProps<T extends ElementType> = {
   as?: T
   className?: string
   fullWidth?: boolean
@@ -19,8 +19,16 @@ type ButtonProps<T extends ElementType = 'button'> = {
   variant?: 'primary' | 'secondary'
 } & ComponentPropsWithoutRef<T>
 
-export const Button = forwardRef(
-  <T extends ElementType = 'button'>(props: ButtonProps<T>, ref: Ref<ElementRef<T>>) => {
+interface PolymorphRef<T extends ElementType> {
+  ref?: Ref<ElementRef<T>>
+}
+
+type ButtonWithRef = <T extends ElementType = 'button'>(
+  props: ButtonProps<T> & PolymorphRef<T>
+) => ReactNode
+
+export const Button: ButtonWithRef = forwardRef(
+  <T extends ElementType = 'button'>(props: ButtonProps<T>, ref: ElementRef<T>) => {
     const { as, children, className, fullWidth, icon, variant = 'primary', ...restProps } = props
 
     const Component: ElementType = as || 'button'
