@@ -1,6 +1,6 @@
 import { Ref, SVGProps, forwardRef, memo } from 'react'
 const SvgComponent = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => {
-  const { color, ...restProps } = props
+  const { color = '#fff', ...restProps } = props
 
   return (
     <svg

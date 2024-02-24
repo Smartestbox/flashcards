@@ -1,4 +1,4 @@
-.label {
+.container {
   cursor: pointer;
 
   display: flex;
@@ -13,7 +13,7 @@
   }
 }
 
-.root {
+.box {
   cursor: pointer;
 
   display: flex;
@@ -48,11 +48,14 @@
     border-color: var(--color-light-100);
   }
 
-  &[data-state='checked']:disabled {
+  &[data-disabled] {
     cursor: default;
     color: var(--color-light-700);
-    background-color: var(--color-dark-100);
     border-color: var(--color-dark-100);
+
+    &[data-state='checked'] {
+      background-color: var(--color-dark-100);
+    }
   }
 
   &:not(:disabled):hover::before {

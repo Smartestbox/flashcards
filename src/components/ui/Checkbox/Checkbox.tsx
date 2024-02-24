@@ -9,15 +9,14 @@ import s from './Checkbox.module.scss'
 import { Typography } from '../Typography'
 
 type CheckboxProps = {
-  disabled: boolean
   label?: string
 } & Omit<ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>, 'asChild'>
 export const Checkbox = (props: CheckboxProps) => {
   const { disabled, label, ...restProps } = props
 
   return (
-    <Typography as={'label'} className={clsx(s.label, disabled && s.disabled)}>
-      <CheckboxPrimitive.Root className={s.root} disabled={disabled} {...restProps}>
+    <Typography as={'label'} className={clsx(s.container, disabled && s.disabled)}>
+      <CheckboxPrimitive.Root className={s.box} disabled={disabled} {...restProps}>
         <CheckboxPrimitive.Indicator className={s.indicator}>
           <Check />
         </CheckboxPrimitive.Indicator>

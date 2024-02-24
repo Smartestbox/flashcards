@@ -6,6 +6,10 @@ import { Button } from './'
 
 const meta = {
   argTypes: {
+    as: {
+      control: { type: 'radio' },
+      options: ['button', 'a'],
+    },
     disabled: {
       control: { type: 'boolean' },
     },
@@ -24,14 +28,14 @@ type Story = StoryObj<typeof meta>
 
 export const PrimaryButton: Story = {
   args: {
-    children: 'Primary Button',
+    children: 'Primary button',
     variant: 'primary',
   },
 }
 
 export const PrimaryButtonLogout: Story = {
   args: {
-    children: 'Primary Button logout',
+    children: 'Primary button logout',
     disabled: false,
     icon: <Logout />,
     variant: 'primary',
@@ -40,14 +44,14 @@ export const PrimaryButtonLogout: Story = {
 
 export const SecondaryButton: Story = {
   args: {
-    children: 'Secondary Button',
+    children: 'Secondary button',
     disabled: false,
     variant: 'secondary',
   },
 }
 export const SecondaryButtonLogout: Story = {
   args: {
-    children: 'Secondary Button logout',
+    children: 'Secondary button logout',
     disabled: false,
     icon: <Logout />,
     variant: 'secondary',
@@ -56,16 +60,24 @@ export const SecondaryButtonLogout: Story = {
 
 export const DisabledButton: Story = {
   args: {
-    children: 'Disabled primary Button',
+    children: 'Disabled primary button',
     disabled: true,
   },
 }
 
 export const FullWidthButton: Story = {
   args: {
-    children: 'Full width Button',
+    children: 'Full width button',
     disabled: false,
     fullWidth: true,
+    variant: 'primary',
+  },
+}
+export const AsLinkButton: Story = {
+  args: {
+    as: 'a',
+    children: 'Like link button',
+    disabled: false,
     variant: 'primary',
   },
 }

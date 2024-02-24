@@ -2,8 +2,9 @@ import {
   ComponentPropsWithoutRef,
   ElementRef,
   ElementType,
+  ForwardedRef,
+  ReactElement,
   ReactNode,
-  Ref,
   forwardRef,
 } from 'react'
 
@@ -11,7 +12,9 @@ import { clsx } from 'clsx'
 
 import s from './Button.module.scss'
 
-type ButtonProps<T extends ElementType> = {
+type InferType<T> = T extends ElementType<infer U> ? U : never
+
+export type ButtonProps<T extends ElementType = 'button'> = {
   as?: T
   className?: string
   fullWidth?: boolean
@@ -19,16 +22,8 @@ type ButtonProps<T extends ElementType> = {
   variant?: 'primary' | 'secondary'
 } & ComponentPropsWithoutRef<T>
 
-interface PolymorphRef<T extends ElementType> {
-  ref?: Ref<ElementRef<T>>
-}
-
-type ButtonWithRef = <T extends ElementType = 'button'>(
-  props: ButtonProps<T> & PolymorphRef<T>
-) => ReactNode
-
-export const Button: ButtonWithRef = forwardRef(
-  <T extends ElementType = 'button'>(props: ButtonProps<T>, ref: ElementRef<T>) => {
+const Button = forwardRef(
+  <T extends ElementType = 'button'>(props: ButtonProps<T>, ref: ForwardedRef<InferType<T>>) => {
     const { as, children, className, fullWidth, icon, variant = 'primary', ...restProps } = props
 
     const Component: ElementType = as || 'button'
@@ -45,3 +40,10 @@ export const Button: ButtonWithRef = forwardRef(
     )
   }
 )
+
+/** Accepts all props of the native button element. */
+export default Button as <T extends ElementType = 'button'>(
+  props: ButtonProps<T> & {
+    ref?: ForwardedRef<ElementRef<T>>
+  }
+) => ReactElement

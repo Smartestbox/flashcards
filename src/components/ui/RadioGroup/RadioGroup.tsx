@@ -17,11 +17,11 @@ type RadioGroupProps = {
 
 export const RadioGroup = forwardRef<ElementRef<typeof RadioGroupPrimitive.Root>, RadioGroupProps>(
   (props, ref) => {
-    const { disabled, options, ...restProps } = props
+    const { className, disabled, options, ...restProps } = props
 
     return (
       <RadioGroupPrimitive.Root
-        className={s.RadioGroupPrimitiveRoot}
+        className={clsx(s.RadioGroupPrimitiveRoot, className)}
         {...restProps}
         disabled={disabled}
         ref={ref}
