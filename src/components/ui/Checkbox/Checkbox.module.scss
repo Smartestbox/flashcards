@@ -8,7 +8,7 @@
   width: fit-content;
 
   &.disabled {
-    cursor: default;
+    pointer-events: none;
     color: var(--color-dark-100);
   }
 }
@@ -44,17 +44,17 @@
   }
 
   &[data-state='checked'] {
-    background-color: var(--color-light-100);
     border-color: var(--color-light-100);
   }
 
   &[data-disabled] {
-    cursor: default;
+    pointer-events: none;
     color: var(--color-light-700);
-    border-color: var(--color-dark-100);
+
+    // border-color: var(--color-dark-100);
 
     &[data-state='checked'] {
-      background-color: var(--color-dark-100);
+      background-color: var(--color-light-700);
     }
   }
 
@@ -73,6 +73,6 @@
   align-items: center;
   justify-content: center;
 
-  width: 18px;
-  height: 18px;
+  // width: 18px;
+  // height: 18px;
 }

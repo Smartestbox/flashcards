@@ -18,7 +18,7 @@ export const Checkbox = (props: CheckboxProps) => {
     <Typography as={'label'} className={clsx(s.container, disabled && s.disabled)}>
       <CheckboxPrimitive.Root className={s.box} disabled={disabled} {...restProps}>
         <CheckboxPrimitive.Indicator className={s.indicator}>
-          <Check />
+          <Check color={disabled ? '#808080' : '#fff'} />
         </CheckboxPrimitive.Indicator>
       </CheckboxPrimitive.Root>
       {label}

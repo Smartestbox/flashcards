@@ -1,22 +1,24 @@
 import { Ref, SVGProps, forwardRef, memo } from 'react'
-const SvgComponent = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => (
-  <svg
-    fill={'none'}
-    height={15}
-    ref={ref}
-    width={15}
-    xmlns={'http://www.w3.org/2000/svg'}
-    {...props}
-  >
-    <path
-      clipRule={'evenodd'}
-      d={
-        'M11.467 3.727c.289.189.37.576.181.865l-4.25 6.5a.625.625 0 0 1-.944.12l-2.75-2.5a.625.625 0 0 1 .841-.925l2.208 2.007 3.849-5.886a.625.625 0 0 1 .865-.181Z'
-      }
-      fill={'currentColor'}
-      fillRule={'evenodd'}
-    />
-  </svg>
-)
+const SvgComponent = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => {
+  const { color, ...rest } = props
+
+  return (
+    <svg
+      fill={'none'}
+      height={18}
+      ref={ref}
+      width={18}
+      xmlns={'http://www.w3.org/2000/svg'}
+      {...rest}
+    >
+      <path
+        d={
+          'M16 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2ZM7 14 2 9l1.41-1.41L7 11.17l7.59-7.59L16 5l-9 9Z'
+        }
+        fill={color}
+      />
+    </svg>
+  )
+}
 
 export default memo(forwardRef(SvgComponent))

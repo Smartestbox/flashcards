@@ -58,10 +58,17 @@ export const SecondaryButtonLogout: Story = {
   },
 }
 
-export const DisabledButton: Story = {
+export const DisabledPrimaryButton: Story = {
   args: {
     children: 'Disabled primary button',
     disabled: true,
+  },
+}
+export const DisabledSecondaryButton: Story = {
+  args: {
+    children: 'Disabled secondary button',
+    disabled: true,
+    variant: 'secondary',
   },
 }
 
