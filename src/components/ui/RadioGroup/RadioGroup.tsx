@@ -22,20 +22,22 @@ export const RadioGroup = forwardRef<ElementRef<typeof RadioGroupPrimitive.Root>
     return (
       <RadioGroupPrimitive.Root
         className={clsx(s.RadioGroupPrimitiveRoot, className)}
-        {...restProps}
         disabled={disabled}
         ref={ref}
+        {...restProps}
       >
         {options.map(option => {
           return (
-            <div className={s.RadioElementContainer} key={option.value}>
+            <Typography
+              as={'label'}
+              className={clsx(s.Label, disabled && s.disabled)}
+              key={option.value}
+            >
               <RadioGroupPrimitive.Item className={s.RadioGroupPrimitiveItem} value={option.value}>
                 <RadioGroupPrimitive.Indicator className={s.RadioGroupPrimitiveIndicator} />
               </RadioGroupPrimitive.Item>
-              <Typography as={'label'} className={clsx(s.Label, disabled && s.disabled)}>
-                {option.label}
-              </Typography>
-            </div>
+              {option.label}
+            </Typography>
           )
         })}
       </RadioGroupPrimitive.Root>

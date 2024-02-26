@@ -2,8 +2,8 @@ import {
   ComponentPropsWithoutRef,
   ElementRef,
   ElementType,
-  ReactNode,
-  Ref,
+  ForwardedRef,
+  ReactElement,
   forwardRef,
 } from 'react'
 
@@ -11,20 +11,14 @@ import { clsx } from 'clsx'
 
 import s from './Card.module.scss'
 
-interface PolymorphRef<T extends ElementType> {
-  ref?: Ref<ElementRef<T>>
-}
+type InferType<T> = T extends ElementType<infer U> ? U : never
 
-type CardProps<T extends ElementType = 'div'> = {
+export type CardProps<T extends ElementType = 'div'> = {
   as?: T
 } & ComponentPropsWithoutRef<T>
 
-type CardWithRef = <T extends ElementType = 'div'>(
-  props: CardProps<T> & PolymorphRef<T>
-) => ReactNode
-
-export const Card: CardWithRef = forwardRef(
-  <T extends ElementType = 'div'>(props: CardProps<T>, ref: ElementRef<T>) => {
+const Card = forwardRef(
+  <T extends ElementType = 'div'>(props: CardProps<T>, ref: ForwardedRef<InferType<T>>) => {
     const { as, className, ...restProps } = props
 
     const Component: ElementType = as ?? 'div'
@@ -32,3 +26,10 @@ export const Card: CardWithRef = forwardRef(
     return <Component className={clsx(s.card, className)} ref={ref} {...restProps} />
   }
 )
+
+/** Accepts all props of the native button element. */
+export default Card as <T extends ElementType = 'div'>(
+  props: CardProps<T> & {
+    ref?: ForwardedRef<ElementRef<T>>
+  }
+) => ReactElement
