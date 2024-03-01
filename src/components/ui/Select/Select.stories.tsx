@@ -26,6 +26,7 @@ export const DefaultSelect: Story = {
   args: {
     label: 'Select value',
     options,
+    placeholder: 'Select value...',
   },
 }
 export const DisabledSelect: Story = {
@@ -33,6 +34,7 @@ export const DisabledSelect: Story = {
     disabled: true,
     label: 'Select value',
     options,
+    placeholder: 'Select value...',
   },
 }
 export const FullWidthSelect: Story = {
@@ -40,5 +42,6 @@ export const FullWidthSelect: Story = {
     fullWidth: true,
     label: 'Select value',
     options,
+    placeholder: 'Select value...',
   },
 }

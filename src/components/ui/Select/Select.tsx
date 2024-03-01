@@ -1,6 +1,6 @@
 import { ComponentPropsWithoutRef, ReactNode, forwardRef } from 'react'
 
-import { ChevronDown } from '@/assets/icons'
+import { ArrowDown } from '@/assets/icons'
 import { Typography } from '@/components/ui/Typography'
 import * as SelectPrimitive from '@radix-ui/react-select'
 import { clsx } from 'clsx'
@@ -12,51 +12,52 @@ type Option = {
   value: string
 }
 
-type SelectProps = {
+export type SelectProps = {
   className?: string
   fullWidth?: boolean
   label?: string
   options: Option[]
+  pagination?: boolean
   placeholder?: ReactNode
 } & ComponentPropsWithoutRef<typeof SelectPrimitive.Root>
 
 export const Select = (props: SelectProps) => {
-  const {
-    className,
-    fullWidth,
-    label,
-    options,
-    placeholder = 'Select value...',
-    ...restProps
-  } = props
+  const { className, disabled, fullWidth, label, options, pagination, placeholder, ...restProps } =
+    props
 
   return (
-    <SelectPrimitive.Root {...restProps}>
+    <SelectPrimitive.Root {...restProps} disabled={disabled}>
       {label && (
-        <Typography className={clsx(s.label, restProps.disabled && s.disabled)} variant={'body2'}>
+        <Typography className={clsx(s.label, disabled && s.disabled)} variant={'body2'}>
           {label}
         </Typography>
       )}
-      <SelectPrimitive.Trigger className={clsx(s.SelectTrigger, fullWidth && s.fullWidth)}>
-        <Typography>
+      <SelectPrimitive.Trigger
+        className={clsx(s.selectTrigger, fullWidth && s.fullWidth, pagination && s.pagination)}
+      >
+        <Typography variant={pagination ? 'body2' : 'body1'}>
           <SelectPrimitive.Value placeholder={placeholder} />
         </Typography>
-        <SelectPrimitive.Icon className={s.SelectIcon}>
-          <ChevronDown />
+        <SelectPrimitive.Icon className={s.icon}>
+          <ArrowDown color={disabled ? '#4C4C4C' : '#fff'} />
         </SelectPrimitive.Icon>
       </SelectPrimitive.Trigger>
 
       <SelectPrimitive.Portal>
         <SelectPrimitive.Content
           avoidCollisions={false}
-          className={s.SelectContent}
+          className={s.selectContent}
           position={'popper'}
           sideOffset={-1}
         >
-          <SelectPrimitive.Viewport className={s.SelectViewport}>
+          <SelectPrimitive.Viewport>
             {options.map(option => (
-              <SelectItem key={option.value} value={option.value}>
-                {option.title}
+              <SelectItem
+                className={clsx(s.selectItem, s.pagination)}
+                key={option.value}
+                value={option.value}
+              >
+                <Typography variant={pagination ? 'body2' : 'body1'}>{option.title}</Typography>
               </SelectItem>
             ))}
           </SelectPrimitive.Viewport>
