@@ -1,0 +1,14 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  width: 100%;
+
+  .label {
+    color: var(--color-light-900);
+  }
+}
+
+.list {
+  display: flex;
+}
