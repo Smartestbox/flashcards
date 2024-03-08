@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form'
 
 import { Button } from '@/components/ui/Button'
 import { TextField } from '@/components/ui/TextField'
-import { ControlledCheckbox } from '@/components/ui/controlled/ControlledCheckbox/ControlledCheckbox'
+import { ControlledCheckbox } from '@/components/ui_controlled/ControlledCheckbox/ControlledCheckbox'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
@@ -25,7 +25,7 @@ export const LoginForm = () => {
   })
 
   const onSubmit = (data: FormValues) => {
-    // console.log('data:', data)
+    console.log('data:', data)
   }
 
   // console.log(errors)
