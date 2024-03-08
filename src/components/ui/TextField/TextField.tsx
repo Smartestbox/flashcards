@@ -13,8 +13,7 @@ type TextFieldProps = {
 } & ComponentPropsWithoutRef<'input'>
 
 export const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, ref) => {
-  const { disabled, errorText, label, name, onChange, onChangeValue, type, value, ...restProps } =
-    props
+  const { disabled, errorText, label, onChange, onChangeValue, type, value, ...restProps } = props
   const [isShowPassword, setIsShowPassword] = useState<boolean>(false)
 
   const inputType = type === 'password' && isShowPassword ? 'text' : type
