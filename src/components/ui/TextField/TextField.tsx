@@ -6,7 +6,7 @@ import { clsx } from 'clsx'
 
 import s from './TextField.module.scss'
 
-type TextFieldProps = {
+export type TextFieldProps = {
   errorText?: string
   label?: string
   onChangeValue?: (value: string) => void
@@ -32,6 +32,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, re
   }
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     onChange?.(e)
+    onChangeValue?.(e.currentTarget.value)
   }
   const handleClickClearField = () => {
     onChangeValue?.('')
