@@ -11,7 +11,7 @@ type Option = {
   value: string
 }
 
-type RadioGroupProps = {
+export type RadioGroupProps = {
   options: Option[]
 } & Omit<ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root>, 'asChild'>
 
