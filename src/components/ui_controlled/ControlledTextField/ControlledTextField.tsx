@@ -8,12 +8,13 @@ type ControlledTextFieldProps<T extends FieldValues> = UseControllerProps<T> &
 export const ControlledTextField = <T extends FieldValues>(props: ControlledTextFieldProps<T>) => {
   const { control, defaultValue, name, ...rest } = props
   const {
-    field: { onChange, value },
+    field,
+    fieldState: { error },
   } = useController({
     control,
     defaultValue,
     name,
   })
 
-  return <TextField onChange={onChange} value={value} {...rest} />
+  return <TextField {...rest} {...field} errorText={error?.message} />
 }

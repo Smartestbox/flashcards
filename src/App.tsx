@@ -1,5 +1,9 @@
-import { SignInForm } from '@/components/auth/SignInForm/SignInForm'
+import { SignInForm, SignInFormFields } from '@/components/auth/SignInForm/SignInForm'
 
 export function App() {
-  return <SignInForm />
+  const onSubmit = (data: SignInFormFields) => {
+    alert(JSON.stringify(data))
+  }
+
+  return <SignInForm onSubmit={onSubmit} />
 }
