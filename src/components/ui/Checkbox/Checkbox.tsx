@@ -15,10 +15,10 @@ export type CheckboxProps = {
 
 export const Checkbox = forwardRef<ElementRef<typeof CheckboxPrimitive.Root>, CheckboxProps>(
   (props, ref) => {
-    const { disabled, label, onChange, ...restProps } = props
+    const { className, disabled, label, onChange, ...restProps } = props
 
     return (
-      <Typography as={'label'} className={clsx(s.container, disabled && s.disabled)}>
+      <Typography as={'label'} className={clsx(s.container, disabled && s.disabled, className)}>
         <CheckboxPrimitive.Root
           className={s.box}
           disabled={disabled}

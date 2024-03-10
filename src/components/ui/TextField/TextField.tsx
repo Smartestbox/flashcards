@@ -6,24 +6,36 @@ import { clsx } from 'clsx'
 
 import s from './TextField.module.scss'
 
-type TextFieldProps = {
+export type TextFieldProps = {
+  className?: string
   errorText?: string
   label?: string
   onChangeValue?: (value: string) => void
 } & ComponentPropsWithoutRef<'input'>
 
 export const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, ref) => {
-  const { disabled, errorText, label, onChange, onChangeValue, type, value, ...restProps } = props
+  const {
+    className,
+    disabled,
+    errorText,
+    label,
+    onChange,
+    onChangeValue,
+    type,
+    value,
+    ...restProps
+  } = props
   const [isShowPassword, setIsShowPassword] = useState<boolean>(false)
 
   const inputType = type === 'password' && isShowPassword ? 'text' : type
 
   const styles = {
+    container: clsx(s.container, className),
     input: clsx(s.input, errorText && s.error, type === 'search' && s.searchInput),
     label: clsx(disabled ? s.disabled : s.label),
-    leftIcon: clsx(s.leftIcon),
+    leftIcon: clsx(s.leftIcon, disabled && s.disabled),
     leftIconColor: clsx((disabled && '#4C4C4C') || (errorText && '#F23D61') || '#808080'),
-    rightIcon: clsx(s.rightIcon),
+    rightIcon: clsx(s.rightIcon, disabled && s.disabled),
     rightIconColor: clsx(disabled ? '#4C4C4C' : '#FFFFFF'),
   }
 
@@ -32,13 +44,14 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, re
   }
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     onChange?.(e)
+    onChangeValue?.(e.currentTarget.value)
   }
   const handleClickClearField = () => {
     onChangeValue?.('')
   }
 
   return (
-    <div className={s.container}>
+    <div className={styles.container}>
       {label && (
         <Typography as={'label'} className={styles.label} variant={'body2'}>
           {label}
