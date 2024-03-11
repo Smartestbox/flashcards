@@ -26,6 +26,7 @@
 
 .primary {
   background-color: var(--color-accent-500);
+  box-shadow: 0 4px 18px 0 #8c61ff59;
 
   &:hover {
     background-color: var(--color-accent-300);
@@ -43,6 +44,7 @@
 
 .secondary {
   background-color: var(--color-dark-300);
+  box-shadow: 0 4px 18px 0 #8c61ff59;
 
   &:hover {
     background-color: var(--color-dark-100);
@@ -59,13 +61,4 @@
 
 .fullWidth {
   width: 100%;
-}
-
-.link {
-  color: var(--color-accent-500);
-  text-decoration: underline var(--color-accent-500);
-  background-color: transparent;
-  &:visited {
-    color: var(--color-accent-500);
-  }
 }

@@ -14,17 +14,8 @@ export type TextFieldProps = {
 } & ComponentPropsWithoutRef<'input'>
 
 export const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, ref) => {
-  const {
-    className,
-    disabled,
-    errorText,
-    label,
-    onChange,
-    onChangeValue,
-    type,
-    value,
-    ...restProps
-  } = props
+  const { className, disabled, errorText, label, onChange, onChangeValue, type, ...restProps } =
+    props
   const [isShowPassword, setIsShowPassword] = useState<boolean>(false)
 
   const inputType = type === 'password' && isShowPassword ? 'text' : type
@@ -65,10 +56,9 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, re
           onChange={handleChange}
           ref={ref}
           type={inputType}
-          value={value}
           {...restProps}
         />
-        {type === 'search' && value && (
+        {type === 'search' && (
           <Cross
             className={styles.rightIcon}
             color={styles.rightIconColor}

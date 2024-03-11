@@ -1,17 +1,20 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { SignInForm, SignInFormFields } from '@/components/auth/SignInForm/SignInForm'
+import {
+  CreateNewPasswordForm,
+  CreateNewPasswordFormFields,
+} from '@/components/auth/CreateNewPasswordForm/CreateNewPasswordForm'
 
 const meta = {
-  component: SignInForm,
+  component: CreateNewPasswordForm,
   tags: ['autodocs'],
-  title: 'Auth/SignInForm',
-} satisfies Meta<typeof SignInForm>
+  title: 'Auth/CreateNewPasswordForm',
+} satisfies Meta<typeof CreateNewPasswordForm>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
-const onSubmit = (data: SignInFormFields) => {
+const onSubmit = (data: CreateNewPasswordFormFields) => {
   alert(JSON.stringify(data))
 }
 
