@@ -7,6 +7,7 @@ import s from './Typography.module.scss'
 type TypographyProps<T extends ElementType> = {
   as?: T
   className?: string
+  disabled?: boolean
   variant?:
     | 'body1'
     | 'body2'
@@ -17,6 +18,7 @@ type TypographyProps<T extends ElementType> = {
     | 'h4'
     | 'link1'
     | 'link2'
+    | 'link3'
     | 'overline'
     | 'subtitle1'
     | 'subtitle2'

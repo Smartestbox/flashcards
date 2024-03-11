@@ -88,4 +88,24 @@
       color: var(--color-info-500);
     }
   }
+
+  &.link3 {
+    cursor: pointer;
+
+    padding: 6px 28px;
+
+    color: var(--color-light-100);
+
+    background-color: var(--color-accent-500);
+    border-radius: 3px;
+    box-shadow: 0 4px 18px 0 #8c61ff59;
+
+    &:hover {
+      background-color: var(--color-accent-300);
+    }
+
+    &:active {
+      background-color: var(--color-accent-700);
+    }
+  }
 }

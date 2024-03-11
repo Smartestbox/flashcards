@@ -1,0 +1,24 @@
+.CheckEmailForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 420px;
+  padding: 33px 36px 25px;
+}
+
+.EmailIcon {
+  margin-top: 27px;
+}
+
+.ResponseTip {
+  margin-top: 19px;
+  color: var(--color-light-900);
+  text-align: center;
+}
+
+.BackToSignInBtn {
+  width: 100%;
+  margin-top: 65px;
+  text-align: center;
+}
