@@ -8,22 +8,26 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { clsx } from 'clsx'
 import z from 'zod'
 
-import s from './ForgotPasswordForm.module.scss'
+import s from './RecoverPasswordForm.module.scss'
 
 const forgotPasswordSchema = z.object({
   email: z.string().email('Invalid email'),
 })
 
-export type ForgotPasswordFormFields = z.infer<typeof forgotPasswordSchema>
+export type RecoverPasswordFormFields = z.infer<typeof forgotPasswordSchema>
 
-type ForgotPasswordFormProps = {
+type RecoverPasswordFormProps = {
   className?: string
   disabled?: boolean
-  onSubmit: (values: ForgotPasswordFormFields) => void
+  onSubmit: (values: RecoverPasswordFormFields) => void
 }
 
-export const ForgotPasswordForm = ({ className, disabled, onSubmit }: ForgotPasswordFormProps) => {
-  const { control, handleSubmit } = useForm<ForgotPasswordFormFields>({
+export const RecoverPasswordForm = ({
+  className,
+  disabled,
+  onSubmit,
+}: RecoverPasswordFormProps) => {
+  const { control, handleSubmit } = useForm<RecoverPasswordFormFields>({
     defaultValues: {
       email: '',
     },

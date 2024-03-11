@@ -1,20 +1,20 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
 import {
-  ForgotPasswordForm,
-  ForgotPasswordFormFields,
-} from '@/components/auth/ForgotPasswordForm/ForgotPasswordForm'
+  RecoverPasswordForm,
+  RecoverPasswordFormFields,
+} from '@/components/auth/RecoverPasswordForm/RecoverPasswordForm'
 
 const meta = {
-  component: ForgotPasswordForm,
+  component: RecoverPasswordForm,
   tags: ['autodocs'],
-  title: 'Auth/ForgotPasswordForm',
-} satisfies Meta<typeof ForgotPasswordForm>
+  title: 'Auth/RecoverPasswordForm',
+} satisfies Meta<typeof RecoverPasswordForm>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
-const onSubmit = (data: ForgotPasswordFormFields) => {
+const onSubmit = (data: RecoverPasswordFormFields) => {
   alert(JSON.stringify(data))
 }
 
