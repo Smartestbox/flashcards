@@ -11,7 +11,7 @@ import { z } from 'zod'
 import s from './SignInForm.module.scss'
 
 const signInSchema = z.object({
-  email: z.string().email({ message: 'Invalid email address' }),
+  email: z.string().email({ message: 'Invalid email' }),
   password: z.string().min(3, 'Password must contain at least 3 characters'),
   rememberMe: z.boolean().default(false),
 })
@@ -21,7 +21,7 @@ export type SignInFormFields = z.infer<typeof signInSchema>
 type SignInFormProps = {
   className?: string
   disabled?: boolean
-  onSubmit: (data: SignInFormFields) => void
+  onSubmit: (values: SignInFormFields) => void
 }
 
 export const SignInForm = ({ disabled, onSubmit }: SignInFormProps) => {
@@ -40,14 +40,14 @@ export const SignInForm = ({ disabled, onSubmit }: SignInFormProps) => {
         Sign In
       </Typography>
       <ControlledTextField
-        className={s.PasswordField}
+        className={s.EmailField}
         control={control}
         disabled={disabled}
         label={'Email'}
         name={'email'}
       ></ControlledTextField>
       <ControlledTextField
-        className={s.EmailField}
+        className={s.PasswordField}
         control={control}
         disabled={disabled}
         label={'Password'}
@@ -67,10 +67,12 @@ export const SignInForm = ({ disabled, onSubmit }: SignInFormProps) => {
       <Button className={s.SignInBtn} disabled={disabled} fullWidth type={'submit'}>
         Sign In
       </Button>
-      <Typography className={s.AccountQuestion}>{"Don't have an account?"}</Typography>
-      <Button as={'a'} className={s.SignUpLink} href={'#'} variant={'link'}>
+      <Typography className={s.AccountQuestion} variant={'body2'}>
+        {"Don't have an account?"}
+      </Typography>
+      <Typography as={'a'} variant={'link1'}>
         Sign Up
-      </Button>
+      </Typography>
     </Card>
   )
 }

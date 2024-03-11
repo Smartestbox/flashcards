@@ -6,7 +6,11 @@
 
   width: 100%;
   max-width: 420px;
-  padding: 33px 36px 25px 27px;
+  padding: 33px 36px 25px 36px;
+}
+
+.EmailField {
+  margin-top: 27px;
 }
 
 .RememberCheckbox {
@@ -15,7 +19,10 @@
 }
 
 .ForgotPassword {
+  cursor: pointer;
   align-self: end;
+  color: var(--color-light-100);
+  text-decoration: none;
 }
 
 .SignInBtn {
@@ -24,8 +31,10 @@
 
 .AccountQuestion {
   margin-top: 20px;
+  color: var(--color-light-900);
 }
 
 .SignUpLink {
   margin-top: 7px;
+  font-weight: var(--font-weight-bold);
 }
