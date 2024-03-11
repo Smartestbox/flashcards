@@ -6,7 +6,7 @@ import s from './CheckEmailForm.module.scss'
 
 export const CheckEmailForm = () => {
   return (
-    <Card as={'div'} className={s.CheckEmailForm}>
+    <Card className={s.CheckEmailForm}>
       <Typography as={'h1'} variant={'h1'}>
         Check Email
       </Typography>
