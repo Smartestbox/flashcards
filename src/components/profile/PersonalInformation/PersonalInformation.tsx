@@ -1,4 +1,5 @@
 import { Edit, Logout } from '@/assets/icons'
+import { Avatar } from '@/components/ui/Avatar'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import { Typography } from '@/components/ui/Typography'
@@ -38,7 +39,7 @@ export const PersonalInformation = ({
         Personal Information
       </Typography>
       <div className={s.AvatarContainer}>
-        <img alt={'avatar'} src={avatar} />
+        <Avatar alt={'avatar'} size={96} src={avatar} />
         <button onClick={handleAvatarChange}>
           <Edit />
         </button>

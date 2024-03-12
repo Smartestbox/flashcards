@@ -16,5 +16,14 @@ export const Default: Story = {
     avatar: 'https://picsum.photos/200',
     email: 'email@email.com',
     name: 'John Galt',
+    onAvatarChange: () => {
+      alert('Avatar changed')
+    },
+    onLogout: () => {
+      alert('Logged out')
+    },
+    onNameChange: () => {
+      alert('Name changed')
+    },
   },
 }

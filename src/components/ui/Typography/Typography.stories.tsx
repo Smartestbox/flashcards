@@ -85,7 +85,6 @@ export const LINK1: Story = {
   args: {
     as: 'a',
     children: 'Link 1',
-    style: { color: '#397df6' },
     variant: 'link1',
   },
 }
@@ -93,7 +92,13 @@ export const LINK2: Story = {
   args: {
     as: 'a',
     children: 'Link 2',
-    style: { color: '#397df6' },
     variant: 'link2',
+  },
+}
+export const LINK3: Story = {
+  args: {
+    as: 'a',
+    children: 'Link 3',
+    variant: 'link3',
   },
 }

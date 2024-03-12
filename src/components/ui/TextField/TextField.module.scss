@@ -1,4 +1,4 @@
-.container {
+.Container {
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -7,20 +7,21 @@
   height: 99px;
 }
 
-.inputWrapper {
+.InputWrapper {
   position: relative;
   width: 100%;
 
-  &:hover .input:not(:disabled) {
-    background-color: var(--color-dark-700);
-  }
+  //&:hover .Input:not(:disabled) {
+  //  background-color: var(--color-dark-700);
+  //  border: 1px solid var(--color-dark-100);
+  //}
 }
 
-.label {
+.Label {
   color: var(--color-dark-100);
 }
 
-.input {
+.Input {
   width: 100%;
   padding: 10px;
 
@@ -36,7 +37,7 @@
     color: var(--color-dark-100);
   }
 
-  &.error {
+  &.Error {
     border: 1px solid var(--color-danger-300);
 
     &::placeholder {
@@ -64,32 +65,36 @@
   }
 }
 
-.error {
+.Error {
   color: var(--color-danger-300);
+
+  &:hover {
+    border: 1px solid var(--color-danger-300);
+  }
 }
 
-.disabled {
+.Disabled {
   color: var(--color-dark-300);
 }
 
-.errorLabel {
+.ErrorLabel {
   font-size: var(--font-size-xs);
   line-height: var(--line-height-m);
   color: var(--color-danger-300);
 }
 
-.leftIcon {
+.LeftIcon {
   position: absolute;
   top: 25%;
   left: 0;
   margin-left: 12px;
 
-  &.disabled {
+  &.Disabled {
     pointer-events: none;
   }
 }
 
-.rightIcon {
+.RightIcon {
   cursor: pointer;
 
   position: absolute;
@@ -98,15 +103,15 @@
 
   margin-right: 10px;
 
-  &.disabled {
+  &.Disabled {
     pointer-events: none;
   }
 }
 
-.searchInput {
+.SearchInput {
   padding-left: 40px;
 }
 
-.passwordInput {
+.PasswordInput {
   padding-right: 40px;
 }
