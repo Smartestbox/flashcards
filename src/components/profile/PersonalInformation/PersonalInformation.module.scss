@@ -1,0 +1,63 @@
+.PersonalInformationContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 420px;
+  padding: 33px 36px 60px;
+}
+
+.AvatarContainer {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  margin-top: 27px;
+
+  > img {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+  }
+
+  > button {
+    all: unset;
+
+    cursor: pointer;
+
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 24px;
+    height: 24px;
+
+    background-color: var(--color-dark-300);
+    border-radius: 4px;
+  }
+}
+
+.NameWithEditBtnContainer {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  margin-top: 6px;
+
+  > button {
+    all: unset;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.Email {
+  color: var(--color-dark-100);
+}
+
+.LogoutBtn {
+  margin-top: 13px;
+}

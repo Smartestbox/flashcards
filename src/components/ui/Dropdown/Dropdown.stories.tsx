@@ -1,12 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import {
-  Edit2Outline,
-  Logout,
-  PersonOutline,
-  PlayCircleOutline,
-  TrashOutline,
-} from '@/assets/icons'
+import { Edit, Logout, PersonOutline, PlayCircleOutline, TrashOutline } from '@/assets/icons'
 import { Avatar } from '@/components/ui/Avatar'
 import { Button } from '@/components/ui/Button'
 import {
@@ -43,7 +37,7 @@ export const Learn: Story = {
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
-          <Edit2Outline />
+          <Edit />
           Edit
         </DropdownMenuItem>
         <DropdownMenuSeparator />
