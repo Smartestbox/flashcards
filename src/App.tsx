@@ -1,3 +1,5 @@
+import { Router } from '@/router'
+
 export function App() {
-  return <div></div>
+  return <Router />
 }
