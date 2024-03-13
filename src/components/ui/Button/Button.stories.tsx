@@ -80,11 +80,3 @@ export const FullWidthButton: Story = {
     variant: 'primary',
   },
 }
-export const AsLinkButton: Story = {
-  args: {
-    as: 'a',
-    children: 'Like link button',
-    disabled: false,
-    variant: 'primary',
-  },
-}

@@ -1,0 +1,25 @@
+.Header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 60px;
+  padding: 0 136px;
+
+  background-color: var(--color-dark-700);
+}
+
+.Logo {
+  cursor: pointer;
+}
+
+.HeaderUserInfo {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.HeaderUserName {
+  color: var(--color-light-100);
+  text-decoration-style: dashed;
+}

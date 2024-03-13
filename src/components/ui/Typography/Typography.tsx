@@ -19,6 +19,7 @@ type TypographyProps<T extends ElementType> = {
     | 'link1'
     | 'link2'
     | 'link3'
+    | 'link4'
     | 'overline'
     | 'subtitle1'
     | 'subtitle2'
