@@ -1,11 +1,11 @@
-.container {
+.Container {
   display: flex;
   gap: 12px;
   align-items: center;
   width: fit-content;
 }
 
-.rangeValue {
+.RangeValue {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -48,6 +48,8 @@
 }
 
 .SliderThumb {
+  cursor: pointer;
+
   display: block;
 
   width: 16px;

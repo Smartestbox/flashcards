@@ -18,7 +18,7 @@ type Props = {
 
 export const Pagination = ({
   className,
-  currentPage,
+  currentPage = 1,
   onChangePage,
   pageSize,
   siblingCount = 1,

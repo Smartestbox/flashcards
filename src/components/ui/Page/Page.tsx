@@ -8,6 +8,10 @@ type PageProps = {
   className?: string
 } & ComponentPropsWithoutRef<'div'>
 
-export const Page = ({ className, ...rest }: PageProps) => {
-  return <div {...rest} className={clsx(s.container, className)}></div>
+export const Page = ({ children, className, ...rest }: PageProps) => {
+  return (
+    <div {...rest} className={clsx(s.PageContainer, className)}>
+      {children}
+    </div>
+  )
 }

@@ -58,7 +58,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, re
           type={inputType}
           {...restProps}
         />
-        {type === 'search' && (
+        {type === 'search' && restProps.value && (
           <Cross
             className={styles.rightIcon}
             color={styles.rightIconColor}

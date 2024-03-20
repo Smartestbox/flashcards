@@ -10,16 +10,16 @@ type Props = {
 } & Omit<ComponentPropsWithoutRef<typeof TabsPrimitive.Root>, 'asChild'>
 
 export const Tabs = forwardRef<ElementRef<typeof TabsPrimitive.Root>, Props>((props, ref) => {
-  const { children, label, onChange, ...rest } = props
+  const { children, label, ...rest } = props
 
   return (
-    <TabsPrimitive.Root className={s.root} {...rest} ref={ref}>
+    <TabsPrimitive.Root className={s.Container} {...rest} ref={ref}>
       {label && (
-        <Typography as={'label'} className={s.label} variant={'body2'}>
+        <Typography as={'label'} className={s.Label} variant={'body2'}>
           {label}
         </Typography>
       )}
-      <TabsPrimitive.List className={s.list}>{children}</TabsPrimitive.List>
+      <TabsPrimitive.List className={s.List}>{children}</TabsPrimitive.List>
     </TabsPrimitive.Root>
   )
 })
