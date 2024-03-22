@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from 'react'
 
-import { NoPhoto, TrashOutline } from '@/assets/icons'
+import { Edit, NoPhoto, PlayCircleOutline, TrashOutline } from '@/assets/icons'
 import { Button } from '@/components/ui/Button'
 import { Page } from '@/components/ui/Page/Page'
 import { Pagination } from '@/components/ui/Pagination'
@@ -16,20 +16,23 @@ import {
 import { TabItem, Tabs } from '@/components/ui/Tabs'
 import { TextField } from '@/components/ui/TextField'
 import { Typography } from '@/components/ui/Typography'
+import { useDebounce } from '@/hooks/useDebounce'
 import {
   useCreateDeckMutation,
   useDeleteDeckMutation,
   useGetDecksQuery,
   useGetMinMaxCardsQuery,
-} from '@/services/baseApi'
+} from '@/services/decks/decks.service'
 
 import s from './DecksListPage.module.scss'
 
 export const DecksListPage = () => {
   const [search, setSearch] = useState<string>('')
-  const [sliderRange, setSliderRange] = useState<number[]>([0, 0])
+  const [sliderRange, setSliderRange] = useState<number[]>([0, 10])
   const [decksOwner, setDecksOwner] = useState<string>('all')
   const [currentPage, setCurrentPage] = useState<number>(1)
+  const [pageSize, setPageSize] = useState(10)
+  const debouncedSearch = useDebounce(search)
   const { data: minMaxCards } = useGetMinMaxCardsQuery()
   const {
     data: decks,
@@ -37,9 +40,10 @@ export const DecksListPage = () => {
     isLoading,
   } = useGetDecksQuery({
     currentPage,
+    itemsPerPage: pageSize,
     maxCardsCount: sliderRange[1],
     minCardsCount: sliderRange[0],
-    name: search,
+    name: debouncedSearch,
   })
   const [createDeck, { isLoading: isDeckCreating }] = useCreateDeckMutation()
   const [deleteDeck, { isLoading: isDeckDeleting }] = useDeleteDeckMutation()
@@ -51,14 +55,14 @@ export const DecksListPage = () => {
     return <div>Loading...</div>
   }
 
-  const paginationOptions = [
+  const PAGINATION_OPTIONS = [
     { title: '10', value: '10' },
     { title: '15', value: '15' },
     { title: '20', value: '20' },
     { title: '30', value: '30' },
   ]
 
-  const onChangePage = (page: number) => {
+  const handleChangePage = (page: number) => {
     setCurrentPage(page)
   }
   const handleCardsOwner = (value: string) => {
@@ -80,6 +84,9 @@ export const DecksListPage = () => {
   }
   const handleClearSearch = (value: string) => {
     setSearch(value)
+  }
+  const handlePageSize = (pageSize: string) => {
+    setPageSize(+pageSize)
   }
 
   return (
@@ -142,7 +149,17 @@ export const DecksListPage = () => {
               <TableCell>{new Date(deck.updated).toLocaleDateString('ru-RU')}</TableCell>
               <TableCell>{deck.author.name}</TableCell>
               <TableCell>
-                <Button disabled={isDeckDeleting} onClick={() => deleteDeck(deck.id)}>
+                <Button className={s.Btn} variant={'icon'}>
+                  <PlayCircleOutline />
+                </Button>
+                <Button className={s.Btn} variant={'icon'}>
+                  <Edit />
+                </Button>
+                <Button
+                  disabled={isDeckDeleting}
+                  onClick={() => deleteDeck(deck.id)}
+                  variant={'icon'}
+                >
                   <TrashOutline />
                 </Button>
               </TableCell>
@@ -153,10 +170,12 @@ export const DecksListPage = () => {
       <Pagination
         className={s.Pagination}
         currentPage={decks?.pagination.currentPage ?? 1}
-        onChangePage={onChangePage}
-        options={paginationOptions}
-        pageSize={decks?.pagination.itemsPerPage ?? 10}
+        onChangePage={handleChangePage}
+        onValueChange={handlePageSize}
+        options={PAGINATION_OPTIONS}
+        pageSize={pageSize ?? 10}
         totalCount={decks?.pagination.totalItems ?? 0}
+        value={String(pageSize)}
       />
     </Page>
   )
