@@ -1,4 +1,5 @@
 import { ComponentPropsWithoutRef } from 'react'
+import { Link } from 'react-router-dom'
 
 import { Logout, PersonOutline } from '@/assets/icons'
 import { Avatar } from '@/components/ui/Avatar'
@@ -45,10 +46,10 @@ export const UserDropdown = ({ avatar, email, onLogout, userName }: UserDropdown
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
-          <Typography as={'a'} href={'#'}>
+          <Link to={'#'}>
             <PersonOutline />
             My profile
-          </Typography>
+          </Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem onSelect={onLogout}>
