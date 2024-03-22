@@ -2,7 +2,7 @@
   cursor: pointer;
   user-select: none;
 
-  width: 100%;
+  min-width: max-content;
   padding: 0.3125rem 0.75rem;
 
   font-size: var(--font-size-m);

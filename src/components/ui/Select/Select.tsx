@@ -44,12 +44,7 @@ export const Select = (props: SelectProps) => {
       </SelectPrimitive.Trigger>
 
       <SelectPrimitive.Portal>
-        <SelectPrimitive.Content
-          avoidCollisions={false}
-          className={s.selectContent}
-          position={'popper'}
-          sideOffset={-1}
-        >
+        <SelectPrimitive.Content className={s.selectContent} position={'popper'} sideOffset={-1}>
           <SelectPrimitive.Viewport>
             {options.map(option => (
               <SelectItem

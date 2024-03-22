@@ -8,7 +8,7 @@ import s from './Table.module.scss'
 export const Table = forwardRef<HTMLTableElement, ComponentPropsWithoutRef<'table'>>(
   ({ className, ...rest }, ref) => {
     const classNames = {
-      table: clsx(className, s.table),
+      table: clsx(className, s.Table),
     }
 
     return <table className={classNames.table} {...rest} ref={ref} />
@@ -35,7 +35,7 @@ export const TableRow = forwardRef<ElementRef<'tr'>, ComponentPropsWithoutRef<'t
 export const TableHeadCell = forwardRef<ElementRef<'th'>, ComponentPropsWithoutRef<'th'>>(
   ({ children, className, ...rest }, ref) => {
     const classNames = {
-      headCell: clsx(className, s.headCell),
+      headCell: clsx(className, s.HeadCell),
     }
 
     return (
@@ -48,7 +48,7 @@ export const TableHeadCell = forwardRef<ElementRef<'th'>, ComponentPropsWithoutR
 export const TableCell = forwardRef<ElementRef<'td'>, ComponentPropsWithoutRef<'td'>>(
   ({ className, ...rest }, ref) => {
     const classNames = {
-      cell: clsx(className, s.tableCell),
+      cell: clsx(className, s.TableCell),
     }
 
     return <td className={classNames.cell} {...rest} ref={ref} />
@@ -61,7 +61,7 @@ export const TableEmpty: FC<ComponentProps<'div'> & { mb?: string; mt?: string }
   mt = '89px',
 }) => {
   const classNames = {
-    empty: clsx(className, s.empty),
+    empty: clsx(className, s.Empty),
   }
 
   return (

@@ -1,4 +1,4 @@
-import { SVGProps } from 'react'
+import { SVGProps, forwardRef, memo } from 'react'
 const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
   <svg
     fill={'none'}
@@ -30,4 +30,4 @@ const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-export default SvgComponent
+export default memo(forwardRef(SvgComponent))

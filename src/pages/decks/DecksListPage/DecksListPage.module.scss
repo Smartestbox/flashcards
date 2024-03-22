@@ -1,0 +1,44 @@
+.DecksContainer {
+  width: 100%;
+}
+
+.Header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.Filters {
+  display: flex;
+  gap: 25px;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  margin-top: 10px;
+}
+
+.Table {
+  margin-top: 36px;
+}
+
+.TableCell {
+  vertical-align: middle;
+
+  > svg,
+  img {
+    padding-right: 10px;
+    vertical-align: middle;
+  }
+}
+
+.Btn {
+  margin-right: 10px;
+}
+
+.Pagination {
+  margin-top: 24px;
+}
+
+.tableCell {
+  display: flex;
+}

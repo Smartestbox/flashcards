@@ -6,6 +6,9 @@ import {
   createBrowserRouter,
 } from 'react-router-dom'
 
+import { Layout } from '@/components/layout/Layout'
+import { DecksListPage } from '@/pages/decks/DecksListPage/DecksListPage'
+
 const publicRoutes: RouteObject[] = [
   {
     element: <div>login</div>,
@@ -14,7 +17,7 @@ const publicRoutes: RouteObject[] = [
 ]
 const privateRoutes: RouteObject[] = [
   {
-    element: <div>hello</div>,
+    element: <DecksListPage />,
     path: '/',
   },
 ]
@@ -27,10 +30,15 @@ function PrivateRoutes() {
 
 const router = createBrowserRouter([
   {
-    children: privateRoutes,
-    element: <PrivateRoutes />,
+    children: [
+      {
+        children: [...privateRoutes],
+        element: <PrivateRoutes />,
+      },
+      ...publicRoutes,
+    ],
+    element: <Layout />,
   },
-  ...publicRoutes,
 ])
 
 export const Router = () => {
