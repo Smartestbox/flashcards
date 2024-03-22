@@ -1,13 +1,19 @@
-import { Outlet } from 'react-router-dom'
+import { Navigate, Outlet } from 'react-router-dom'
 
 import { Header } from '@/components/layout/Header'
+import { useMeQuery } from '@/services/auth/auth.service'
 
 import s from './Layout.module.scss'
 
 export const Layout = () => {
+  const { data, isError } = useMeQuery()
+
   const onLogout = () => {}
-  const isAuthenticated = false
-  const data: any = []
+  const isAuthenticated = !isError
+
+  if (!isAuthenticated) {
+    return <Navigate to={'/login'} />
+  }
 
   return (
     <div className={s.Layout}>
